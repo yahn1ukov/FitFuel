@@ -1,0 +1,4 @@
+<resources>
+
+    <style name="Theme.FitFuel" parent="Theme.Material3.Light" />
+</resources>

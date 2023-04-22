@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="160dp"
+    android:layout_margin="8dp">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/view_image_shimmer_recipe"
+        android:layout_width="160dp"
+        android:layout_height="0dp"
+        android:elevation="0dp"
+        app:cardBackgroundColor="@color/mediumGray"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeWidth="0dp" />
+
+    <View
+        android:id="@+id/view_title_shimmer_recipe"
+        android:layout_width="0dp"
+        android:layout_height="25dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/mediumGray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/view_image_shimmer_recipe"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/view_description_shimmer_recipe"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/mediumGray"
+        app:layout_constraintEnd_toEndOf="@+id/view_title_shimmer_recipe"
+        app:layout_constraintStart_toStartOf="@+id/view_title_shimmer_recipe"
+        app:layout_constraintTop_toBottomOf="@+id/view_title_shimmer_recipe" />
+
+    <View
+        android:id="@+id/view_likes_shimmer_recipe"
+        android:layout_width="28dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/mediumGray"
+        app:layout_constraintEnd_toStartOf="@+id/view_minutes_shimmer_recipe"
+        app:layout_constraintStart_toStartOf="@+id/view_description_shimmer_recipe"
+        app:layout_constraintTop_toBottomOf="@+id/view_description_shimmer_recipe" />
+
+    <View
+        android:id="@+id/view_minutes_shimmer_recipe"
+        android:layout_width="28dp"
+        android:layout_height="40dp"
+        android:background="@color/mediumGray"
+        app:layout_constraintEnd_toStartOf="@+id/view_vegan_shimmer_recipe"
+        app:layout_constraintStart_toEndOf="@+id/view_likes_shimmer_recipe"
+        app:layout_constraintTop_toTopOf="@+id/view_likes_shimmer_recipe" />
+
+    <View
+        android:id="@+id/view_vegan_shimmer_recipe"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@color/mediumGray"
+        app:layout_constraintEnd_toEndOf="@+id/view_description_shimmer_recipe"
+        app:layout_constraintStart_toEndOf="@+id/view_minutes_shimmer_recipe"
+        app:layout_constraintTop_toTopOf="@+id/view_minutes_shimmer_recipe" />
+</androidx.constraintlayout.widget.ConstraintLayout>
