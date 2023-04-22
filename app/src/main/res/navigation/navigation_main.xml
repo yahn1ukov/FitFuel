@@ -9,10 +9,23 @@
         android:id="@+id/recipeListFragment"
         android:name="com.ua.fitfuel.presentation.recipes.screens.RecipeListFragment"
         android:label="@string/recipes"
-        tools:layout="@layout/fragment_recipe_list" />
+        tools:layout="@layout/fragment_recipe_list">
+        <action
+            android:id="@+id/action_recipeListFragment_to_recipeBottomSheet"
+            app:destination="@id/recipeBottomSheet" />
+    </fragment>
     <fragment
         android:id="@+id/recipeFavoriteFragment"
         android:name="com.ua.fitfuel.presentation.recipes.screens.RecipeFavoriteFragment"
         android:label="@string/favorites"
         tools:layout="@layout/fragment_recipe_favorite" />
+    <dialog
+        android:id="@+id/recipeBottomSheet"
+        android:name="com.ua.fitfuel.presentation.recipes.screens.RecipeBottomSheet"
+        android:label="fragment_recipe_bottom_sheet"
+        tools:layout="@layout/fragment_recipe_bottom_sheet">
+        <action
+            android:id="@+id/action_recipeBottomSheet_to_recipeListFragment"
+            app:destination="@id/recipeListFragment" />
+    </dialog>
 </navigation>

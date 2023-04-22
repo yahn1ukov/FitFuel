@@ -9,6 +9,9 @@ class Constants {
         const val PREFERENCE_DIET_TYPE_ID = "dietTypeId"
         const val PREFERENCE_IS_NETWORK_AVAILABLE = "isNetworkAvailable"
 
+        const val DATA_BASE_NAME = "FitFuel.db"
+        const val TABLE_RECIPES = "recipes"
+
         const val BASE_URL = "https://api.spoonacular.com"
         const val API_KEY = ""
         const val ENDPOINT_RECIPES = "/recipes/complexSearch"

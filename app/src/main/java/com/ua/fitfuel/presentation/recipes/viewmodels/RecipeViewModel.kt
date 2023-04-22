@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.ua.fitfuel.data.local.models.entities.RecipesEntity
 import com.ua.fitfuel.data.remote.models.entities.Recipes
 import com.ua.fitfuel.data.repositories.RecipeRepository
 import com.ua.fitfuel.utils.Constants.Companion.API_KEY
@@ -21,6 +22,7 @@ import com.ua.fitfuel.utils.Constants.Companion.QUERY_TYPE
 import com.ua.fitfuel.utils.NetworkHelper
 import com.ua.fitfuel.utils.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -29,29 +31,37 @@ class RecipeViewModel @Inject constructor(
     private val recipeRepository: RecipeRepository,
     private val networkHelper: NetworkHelper
 ) : ViewModel() {
-    private val _recipes: MutableLiveData<NetworkResult<Recipes>> = MutableLiveData()
-    val recipe: LiveData<NetworkResult<Recipes>>
-        get() = _recipes
+    val localRecipes = recipeRepository.local.getAll()
 
-    init {
-        getAllRecipes()
+    private fun insert(recipes: RecipesEntity) {
+        viewModelScope.launch(Dispatchers.IO) {
+            recipeRepository.local.insert(recipes)
+        }
     }
 
-    private fun getAllRecipes() {
+    private val _remoteRecipes: MutableLiveData<NetworkResult<Recipes>> = MutableLiveData()
+    val remoteRecipe: LiveData<NetworkResult<Recipes>>
+        get() = _remoteRecipes
+
+    fun getAllRecipes() {
         viewModelScope.launch {
-            _recipes.value = NetworkResult.Loading()
+            _remoteRecipes.value = NetworkResult.Loading()
             if (networkHelper.hasInternetConnection()) {
                 try {
-                    _recipes.value = NetworkResult.toNetworkResult(
-                        recipeRepository.remote.getAllRecipes(applyQueries())
-                    )
+                    val response = recipeRepository.remote.getAllRecipes(applyQueries())
+                    _remoteRecipes.value = NetworkResult.toNetworkResult(response)
+                    _remoteRecipes.value!!.data?.let { cacheRecipes(it) }
                 } catch (e: Exception) {
-                    _recipes.value = NetworkResult.Error("Recipes not found")
+                    _remoteRecipes.value = NetworkResult.Error("Recipes not found")
                 }
             } else {
-                _recipes.value = NetworkResult.Error("No Internet Connection")
+                _remoteRecipes.value = NetworkResult.Error("No Internet Connection")
             }
         }
+    }
+
+    private fun cacheRecipes(recipes: Recipes) {
+        insert(RecipesEntity(recipes))
     }
 
     private fun applyQueries(): Map<String, String> {
