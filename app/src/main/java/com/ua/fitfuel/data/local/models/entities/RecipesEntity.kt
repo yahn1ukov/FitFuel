@@ -6,7 +6,8 @@ import com.ua.fitfuel.data.remote.models.entities.Recipes
 import com.ua.fitfuel.utils.Constants.Companion.TABLE_RECIPES
 
 @Entity(tableName = TABLE_RECIPES)
-class RecipesEntity(var recipes: Recipes) {
+data class RecipesEntity(
     @PrimaryKey(autoGenerate = false)
-    var id: Int = 0
-}
+    var id: Int,
+    var recipes: Recipes
+)
