@@ -11,8 +11,4 @@ class RecipeRemoteDataSource @Inject constructor(
     suspend fun getAllRecipes(queries: Map<String, String>): Response<Recipes> {
         return fitFuelApi.getAllRecipes(queries)
     }
-
-    suspend fun searchRecipes(queries: Map<String, String>): Response<Recipes> {
-        return fitFuelApi.searchRecipes(queries)
-    }
 }

@@ -11,9 +11,4 @@ interface FitFuelApi {
     suspend fun getAllRecipes(
         @QueryMap queries: Map<String, String>
     ): Response<Recipes>
-
-    @GET(ENDPOINT_RECIPES)
-    suspend fun searchRecipes(
-        @QueryMap queries: Map<String, String>
-    ): Response<Recipes>
 }

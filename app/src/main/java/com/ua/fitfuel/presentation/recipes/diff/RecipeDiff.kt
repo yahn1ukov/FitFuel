@@ -1,11 +1,10 @@
 package com.ua.fitfuel.presentation.recipes.diff
 
 import androidx.recyclerview.widget.DiffUtil
-import com.ua.fitfuel.data.remote.models.entities.Recipe
 
-class RecipeDiff(
-    private val oldRecipes: List<Recipe>,
-    private val newRecipes: List<Recipe>
+class RecipeDiff<T>(
+    private val oldRecipes: List<T>,
+    private val newRecipes: List<T>
 ) : DiffUtil.Callback() {
     override fun getOldListSize(): Int {
         return oldRecipes.size

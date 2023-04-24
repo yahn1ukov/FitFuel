@@ -2,12 +2,14 @@ package com.ua.fitfuel.presentation.recipes.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.ua.fitfuel.data.remote.models.entities.Recipe
 import com.ua.fitfuel.data.remote.models.entities.Recipes
 import com.ua.fitfuel.databinding.RecipeListItemBinding
 import com.ua.fitfuel.presentation.recipes.diff.RecipeDiff
+import com.ua.fitfuel.presentation.recipes.screens.RecipeListFragmentDirections
 import dagger.hilt.android.scopes.FragmentScoped
 
 @FragmentScoped
@@ -45,6 +47,12 @@ class RecipeAdapter : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>() {
     override fun onBindViewHolder(holder: RecipeViewHolder, position: Int) {
         val recipe = recipes[position]
         holder.bind(recipe)
+
+        holder.itemView.setOnClickListener {
+            val action =
+                RecipeListFragmentDirections.actionRecipeListFragmentToDetailsActivity(recipe)
+            it.findNavController().navigate(action)
+        }
     }
 
     fun setNewRecipes(newRecipes: Recipes) {

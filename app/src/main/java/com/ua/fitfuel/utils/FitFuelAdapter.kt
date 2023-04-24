@@ -7,12 +7,22 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import coil.load
 import com.ua.fitfuel.R
+import com.ua.fitfuel.utils.Constants.Companion.IMAGE_URL
 
 object FitFuelAdapter {
-    @BindingAdapter("android:loadImage")
+    @BindingAdapter("android:loadRecipeImage")
     @JvmStatic
-    fun loadImage(imageView: ImageView, url: String) {
+    fun loadRecipeImage(imageView: ImageView, url: String) {
         imageView.load(url) {
+            crossfade(400)
+            error(R.drawable.ic_no_image)
+        }
+    }
+
+    @BindingAdapter("android:loadIngredientImage")
+    @JvmStatic
+    fun loadIngredientImage(imageView: ImageView, imageName: String) {
+        imageView.load("$IMAGE_URL/$imageName") {
             crossfade(400)
             error(R.drawable.ic_no_image)
         }
@@ -43,6 +53,12 @@ object FitFuelAdapter {
     @BindingAdapter("android:convertFromIntToText")
     @JvmStatic
     fun convertFromIntToText(textView: TextView, number: Int) {
+        textView.text = number.toString()
+    }
+
+    @BindingAdapter("android:convertFromDoubleToText")
+    @JvmStatic
+    fun convertFromDoubleToText(textView: TextView, number: Double) {
         textView.text = number.toString()
     }
 }

@@ -56,7 +56,7 @@ class RecipeBottomSheet : BottomSheetDialogFragment() {
         }
 
         binding.btnApplyRecipeBottomSheet.setOnClickListener {
-            sharedViewModel.setMealDietTypeTemp(
+            sharedViewModel.setMealDietType(
                 mealType,
                 mealTypeId,
                 dietType,

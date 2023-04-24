@@ -13,10 +13,10 @@ class Constants {
         const val TABLE_RECIPES = "recipes"
 
         const val BASE_URL = "https://api.spoonacular.com"
+        const val IMAGE_URL = "https://spoonacular.com/cdn/ingredients_100x100"
         const val API_KEY = ""
         const val ENDPOINT_RECIPES = "/recipes/complexSearch"
 
-        const val QUERY_SEARCH = "query"
         const val QUERY_NUMBER = "number"
         const val QUERY_API_KEY = "apiKey"
         const val QUERY_TYPE = "type"
@@ -33,5 +33,7 @@ class Constants {
         const val DEFAULT_TYPE_ID = 0
         const val DEFAULT_DIET_ID = 0
         const val DEFAULT_IS_NETWORK_AVAILABLE = false
+
+        const val ARGS_RECIPE_KEY = "RECIPE"
     }
 }

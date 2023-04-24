@@ -1,4 +1,4 @@
-package com.ua.fitfuel.presentation
+package com.ua.fitfuel.presentation.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

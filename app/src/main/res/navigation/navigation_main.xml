@@ -17,6 +17,9 @@
             android:name="backFromBottomSheet"
             android:defaultValue="false"
             app:argType="boolean" />
+        <action
+            android:id="@+id/action_recipeListFragment_to_detailsActivity"
+            app:destination="@id/detailsActivity" />
     </fragment>
     <fragment
         android:id="@+id/recipeFavoriteFragment"
@@ -32,4 +35,13 @@
             android:id="@+id/action_recipeBottomSheet_to_recipeListFragment"
             app:destination="@id/recipeListFragment" />
     </dialog>
+    <activity
+        android:id="@+id/detailsActivity"
+        android:name="com.ua.fitfuel.presentation.activities.DetailsActivity"
+        android:label="Details"
+        tools:layout="@layout/activity_details">
+        <argument
+            android:name="recipe"
+            app:argType="com.ua.fitfuel.data.remote.models.entities.Recipe" />
+    </activity>
 </navigation>

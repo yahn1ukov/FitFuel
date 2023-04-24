@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="ingredient"
+            type="com.ua.fitfuel.data.remote.models.entities.Ingredient" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_margin="8dp">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_image_ingredient"
+            android:layout_width="160dp"
+            android:layout_height="0dp"
+            android:elevation="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeWidth="0dp">
+
+            <ImageView
+                android:id="@+id/image_ingredient"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:loadIngredientImage="@{ingredient.image}"
+                android:scaleType="centerCrop"
+                tools:srcCompat="@tools:sample/avatars" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_title_ingredient"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@{ingredient.name}"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/card_image_ingredient"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_amount_ingredient"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:convertFromDoubleToText="@{ingredient.amount}"
+            app:layout_constraintStart_toStartOf="@+id/text_title_ingredient"
+            app:layout_constraintTop_toBottomOf="@+id/text_title_ingredient" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_unit_ingredient"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@{ingredient.unit}"
+            app:layout_constraintBottom_toBottomOf="@+id/text_amount_ingredient"
+            app:layout_constraintStart_toEndOf="@+id/text_amount_ingredient"
+            app:layout_constraintTop_toTopOf="@+id/text_amount_ingredient" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_consistency_ingredient"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@{ingredient.consistency}"
+            app:layout_constraintEnd_toEndOf="@+id/text_title_ingredient"
+            app:layout_constraintStart_toStartOf="@+id/text_amount_ingredient"
+            app:layout_constraintTop_toBottomOf="@+id/text_amount_ingredient" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_original_ingredient"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@{ingredient.original}"
+            app:layout_constraintEnd_toEndOf="@+id/text_consistency_ingredient"
+            app:layout_constraintStart_toStartOf="@+id/text_consistency_ingredient"
+            app:layout_constraintTop_toBottomOf="@+id/text_consistency_ingredient" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

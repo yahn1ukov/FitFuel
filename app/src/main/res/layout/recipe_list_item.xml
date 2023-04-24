@@ -29,7 +29,7 @@
                 android:id="@+id/image_recipe"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:loadImage="@{recipe.image}"
+                android:loadRecipeImage="@{recipe.image}"
                 android:scaleType="centerCrop"
                 tools:srcCompat="@tools:sample/avatars" />
         </com.google.android.material.card.MaterialCardView>

@@ -1,8 +1,11 @@
 package com.ua.fitfuel.data.remote.models.entities
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Ingredient(
     @SerializedName("amount")
     val amount: Double,
@@ -16,4 +19,4 @@ data class Ingredient(
     val original: String,
     @SerializedName("unit")
     val unit: String
-)
+) : Parcelable

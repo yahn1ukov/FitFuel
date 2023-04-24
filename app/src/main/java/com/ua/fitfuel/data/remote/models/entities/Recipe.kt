@@ -1,8 +1,12 @@
 package com.ua.fitfuel.data.remote.models.entities
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
+import kotlinx.parcelize.RawValue
 
+@Parcelize
 data class Recipe(
     @SerializedName("aggregateLikes")
     val aggregateLikes: Int,
@@ -11,7 +15,7 @@ data class Recipe(
     @SerializedName("dairyFree")
     val dairyFree: Boolean,
     @SerializedName("extendedIngredients")
-    val ingredients: List<Ingredient>,
+    val ingredients: @RawValue List<Ingredient>,
     @SerializedName("glutenFree")
     val glutenFree: Boolean,
     @SerializedName("id")
@@ -34,4 +38,4 @@ data class Recipe(
     val vegetarian: Boolean,
     @SerializedName("veryHealthy")
     val veryHealthy: Boolean,
-)
+) : Parcelable

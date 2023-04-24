@@ -14,7 +14,6 @@ import com.ua.fitfuel.utils.Constants.Companion.QUERY_API_KEY
 import com.ua.fitfuel.utils.Constants.Companion.QUERY_DIET
 import com.ua.fitfuel.utils.Constants.Companion.QUERY_FILL_INGREDIENTS
 import com.ua.fitfuel.utils.Constants.Companion.QUERY_NUMBER
-import com.ua.fitfuel.utils.Constants.Companion.QUERY_SEARCH
 import com.ua.fitfuel.utils.Constants.Companion.QUERY_TYPE
 import com.ua.fitfuel.utils.MealDietType
 import com.ua.fitfuel.utils.PreferenceManager
@@ -31,7 +30,13 @@ class SharedViewModel @Inject constructor(
 
     val getMealDietType = preferenceManager.getMealDietType.asLiveData(Dispatchers.IO)
 
-    fun setMealDietType() {
+    fun setMealDietType(
+        mealType: String,
+        mealTypeId: Int,
+        dietType: String,
+        dietTypeId: Int
+    ) {
+        meadDietType = MealDietType(mealType, mealTypeId, dietType, dietTypeId)
         viewModelScope.launch(Dispatchers.IO) {
             if (this@SharedViewModel::meadDietType.isInitialized) {
                 preferenceManager.setMealDietType(
@@ -42,15 +47,6 @@ class SharedViewModel @Inject constructor(
                 )
             }
         }
-    }
-
-    fun setMealDietTypeTemp(
-        mealType: String,
-        mealTypeId: Int,
-        dietType: String,
-        dietTypeId: Int
-    ) {
-        meadDietType = MealDietType(mealType, mealTypeId, dietType, dietTypeId)
     }
 
     fun applyQueries(): Map<String, String> {
@@ -68,18 +64,6 @@ class SharedViewModel @Inject constructor(
             queries[QUERY_TYPE] = DEFAULT_TYPE
             queries[QUERY_DIET] = DEFAULT_DIET
         }
-
-        return queries
-    }
-
-    fun applyQueries(query: String): Map<String, String> {
-        val queries = HashMap<String, String>()
-
-        queries[QUERY_SEARCH] = query
-        queries[QUERY_NUMBER] = DEFAULT_NUMBER
-        queries[QUERY_API_KEY] = API_KEY
-        queries[QUERY_ADD_RECIPE_INFORMATION] = DEFAULT_ADD_RECIPE_INFORMATION
-        queries[QUERY_FILL_INGREDIENTS] = DEFAULT_FILL_INGREDIENTS
 
         return queries
     }

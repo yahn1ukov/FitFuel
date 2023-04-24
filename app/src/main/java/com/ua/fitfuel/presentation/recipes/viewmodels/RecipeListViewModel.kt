@@ -52,23 +52,6 @@ class RecipeListViewModel @Inject constructor(
         }
     }
 
-    fun searchRecipes(queries: Map<String, String>) {
-        viewModelScope.launch {
-            _searchedRemoteRecipes.value = NetworkResult.Loading()
-            if (networkHelper.hasInternetConnection()) {
-                try {
-                    _searchedRemoteRecipes.value = NetworkResult.toNetworkResult(
-                        recipeRepository.remote.searchRecipes(queries)
-                    )
-                } catch (e: Exception) {
-                    _searchedRemoteRecipes.value = NetworkResult.Error("Recipes not found")
-                }
-            } else {
-                _searchedRemoteRecipes.value = NetworkResult.Error("No Internet Connection")
-            }
-        }
-    }
-
     private fun cacheRecipes(recipes: Recipes) {
         insert(RecipesEntity(0, recipes))
     }
