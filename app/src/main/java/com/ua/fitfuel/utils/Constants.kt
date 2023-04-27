@@ -11,6 +11,7 @@ class Constants {
 
         const val DATA_BASE_NAME = "FitFuel.db"
         const val TABLE_RECIPES = "recipes"
+        const val TABLE_FAVORITES = "favorites"
 
         const val BASE_URL = "https://api.spoonacular.com"
         const val IMAGE_URL = "https://spoonacular.com/cdn/ingredients_100x100"

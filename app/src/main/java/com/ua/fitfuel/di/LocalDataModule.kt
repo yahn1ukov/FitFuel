@@ -2,6 +2,7 @@ package com.ua.fitfuel.di
 
 import android.content.Context
 import androidx.room.Room
+import com.ua.fitfuel.data.local.dao.FavoriteDao
 import com.ua.fitfuel.data.local.dao.RecipeDao
 import com.ua.fitfuel.data.local.database.FitFuelDatabase
 import com.ua.fitfuel.utils.Constants.Companion.DATA_BASE_NAME
@@ -32,5 +33,11 @@ object LocalDataModule {
     @Singleton
     fun provideRecipeDao(database: FitFuelDatabase): RecipeDao {
         return database.recipeDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideFavoriteDao(database: FitFuelDatabase): FavoriteDao {
+        return database.favoriteDao()
     }
 }

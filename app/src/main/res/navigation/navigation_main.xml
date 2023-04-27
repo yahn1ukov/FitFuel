@@ -25,7 +25,11 @@
         android:id="@+id/recipeFavoriteFragment"
         android:name="com.ua.fitfuel.presentation.recipes.screens.RecipeFavoriteFragment"
         android:label="@string/favorites"
-        tools:layout="@layout/fragment_recipe_favorite" />
+        tools:layout="@layout/fragment_recipe_favorite">
+        <action
+            android:id="@+id/action_recipeFavoriteFragment_to_detailsActivity"
+            app:destination="@id/detailsActivity" />
+    </fragment>
     <dialog
         android:id="@+id/recipeBottomSheet"
         android:name="com.ua.fitfuel.presentation.recipes.screens.RecipeBottomSheet"

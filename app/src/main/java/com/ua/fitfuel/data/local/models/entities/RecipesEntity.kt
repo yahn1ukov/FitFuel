@@ -8,6 +8,6 @@ import com.ua.fitfuel.utils.Constants.Companion.TABLE_RECIPES
 @Entity(tableName = TABLE_RECIPES)
 data class RecipesEntity(
     @PrimaryKey(autoGenerate = false)
-    var id: Int,
-    var recipes: Recipes
+    val id: Int,
+    val recipes: Recipes
 )
