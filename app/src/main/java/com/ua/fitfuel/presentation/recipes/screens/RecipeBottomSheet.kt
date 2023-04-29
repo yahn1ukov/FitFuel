@@ -73,6 +73,7 @@ class RecipeBottomSheet : BottomSheetDialogFragment() {
     private fun updateChipGroup(chipId: Int, chipGroup: ChipGroup) {
         val chip = chipGroup.findViewById<Chip>(chipId)
         chip.isChecked = true
+        chipGroup.requestChildFocus(chip, chip)
     }
 
     override fun onDestroyView() {

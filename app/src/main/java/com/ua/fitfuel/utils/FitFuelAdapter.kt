@@ -28,10 +28,10 @@ object FitFuelAdapter {
         }
     }
 
-    @BindingAdapter("android:isRecipeVegan")
+    @BindingAdapter("android:isHealthyNutrition")
     @JvmStatic
-    fun isRecipeVegan(view: View, isVegan: Boolean) {
-        if (isVegan) {
+    fun isHealthyNutrition(view: View, isHealthy: Boolean) {
+        if (isHealthy) {
             when (view) {
                 is ImageView -> view.setColorFilter(
                     ContextCompat.getColor(
@@ -48,17 +48,5 @@ object FitFuelAdapter {
                 )
             }
         }
-    }
-
-    @BindingAdapter("android:convertFromIntToText")
-    @JvmStatic
-    fun convertFromIntToText(textView: TextView, number: Int) {
-        textView.text = number.toString()
-    }
-
-    @BindingAdapter("android:convertFromDoubleToText")
-    @JvmStatic
-    fun convertFromDoubleToText(textView: TextView, number: Double) {
-        textView.text = number.toString()
     }
 }

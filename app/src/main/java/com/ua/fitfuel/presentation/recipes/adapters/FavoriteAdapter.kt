@@ -64,6 +64,8 @@ class FavoriteAdapter(
         val favorite = favorites[position]
         holder.bind(favorite)
 
+        saveItemStateOnScroll(holder, favorite)
+
         holder.itemView.setOnClickListener {
             if (multiSelection) {
                 applySelection(holder, favorite)
@@ -83,9 +85,17 @@ class FavoriteAdapter(
                 applySelection(holder, favorite)
                 true
             } else {
-                multiSelection = false
-                false
+                applySelection(holder, favorite)
+                true
             }
+        }
+    }
+
+    private fun saveItemStateOnScroll(holder: FavoriteViewHolder, currentRecipe: FavoritesEntity) {
+        if (selectedRecipes.contains(currentRecipe)) {
+            changeSelectedRecipeStyle(holder, R.color.mediumGray)
+        } else {
+            changeSelectedRecipeStyle(holder, android.R.color.white)
         }
     }
 
@@ -116,7 +126,11 @@ class FavoriteAdapter(
 
     private fun applyActionModeTitle() {
         when (selectedRecipes.size) {
-            0 -> am.finish()
+            0 -> {
+                multiSelection = false
+                am.finish()
+            }
+
             1 -> am.title = "${selectedRecipes.size} item selected"
             else -> am.title = "${selectedRecipes.size} items selected"
         }

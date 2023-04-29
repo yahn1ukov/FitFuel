@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.navArgs
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.tabs.TabLayoutMediator
 import com.ua.fitfuel.R
 import com.ua.fitfuel.data.local.models.entities.FavoritesEntity
 import com.ua.fitfuel.databinding.ActivityDetailsBinding
@@ -51,10 +52,19 @@ class DetailsActivity : AppCompatActivity() {
         titles.add("Overview")
         titles.add("Ingredients")
 
-        val adapter = ViewPagerAdapter(resultBundle, fragments, titles, supportFragmentManager)
+        val pagerAdapter = ViewPagerAdapter(
+            resultBundle,
+            fragments,
+            this
+        )
 
-        binding.viewPagerDetails.adapter = adapter
-        binding.tabLayoutDetails.setupWithViewPager(binding.viewPagerDetails)
+        binding.viewPagerDetails2.apply {
+            adapter = pagerAdapter
+        }
+
+        TabLayoutMediator(binding.tabLayoutDetails, binding.viewPagerDetails2) { tab, position ->
+            tab.text = titles[position]
+        }.attach()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
