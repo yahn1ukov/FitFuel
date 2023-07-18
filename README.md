@@ -25,20 +25,6 @@ Clean Architecture with MVVM Pattern
 - DataStore
 - DataBinding
 
-### Functionality
-
-- Recipe:
-    - Local (caching):
-        - Get all
-        - Insert
-    - Remote:
-        - Get all
-- Favorite recipes:
-    - Get all
-    - Insert
-    - Delete
-    - Delete all
-
 ### Screenshots
 
 ![app](./screenshots/app.png)
